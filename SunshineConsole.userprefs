@@ -1,0 +1,12 @@
+﻿<Properties StartupItem="SunshineConsole\SunshineConsole.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ActiveRuntime="Mono 3.3.0 (6cd4ddc)&#xD;&#xA;Copyright)" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SunshineConsole\Sunshine.cs">
+    <Files>
+      <File FileName="SunshineConsole\Sunshine.cs" Line="49" Column="42" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
