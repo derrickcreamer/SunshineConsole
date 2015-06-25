@@ -41,8 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="font8x16.bmp">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="font8x16.bmp" />
   </ItemGroup>
 </Project>

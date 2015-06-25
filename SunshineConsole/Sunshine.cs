@@ -10,6 +10,8 @@ using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
@@ -64,7 +66,7 @@ namespace SunshineConsole{
 		protected const int font_h = 16;
 		protected const float font_texcoord_width = 1.0f / 128.0f;
 		protected static readonly float font_texcoord_padding = font_texcoord_width * 8.0f / 9.0f;
-		protected const string font_filename = "font8x16.bmp";
+		//protected const string font_filename = "font8x16.bmp";
 		public ConsoleWindow(int rows,int columns,string window_title) : base(columns*font_w,rows*font_h,GraphicsMode.Default,window_title){
 			VSync = VSyncMode.On;
 			GL.ClearColor(0.0f,0.0f,0.0f,0.0f);
@@ -82,7 +84,7 @@ namespace SunshineConsole{
 					internal_last_key = e.Key;
 				}
 			};
-			LoadTexture(font_filename);
+			LoadTexture();
 			LoadShaders();
 			CreateVBO(rows,columns);
 			Visible = true;
@@ -210,13 +212,13 @@ namespace SunshineConsole{
 			GL.DrawElements(PrimitiveType.Triangles,num_elements,DrawElementsType.UnsignedInt,IntPtr.Zero);
 			SwapBuffers();
 		}
-		protected void LoadTexture(string filename){
-			if(String.IsNullOrEmpty(filename)){
-				throw new ArgumentException(filename);
-			}
+		protected void LoadTexture(){
 			int id = GL.GenTexture();
 			GL.BindTexture(TextureTarget.Texture2D,id);
-			Bitmap bmp = new Bitmap(filename);
+			Assembly embedded = Assembly.GetExecutingAssembly();
+			Stream file = embedded.GetManifestResourceStream("SunshineConsole.font8x16.bmp");
+			Bitmap bmp = new Bitmap(file);
+			//Bitmap bmp = new Bitmap(filename);
 			BitmapData bmp_data = bmp.LockBits(new Rectangle(0,0,bmp.Width,bmp.Height),ImageLockMode.ReadOnly,System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 			GL.TexImage2D(TextureTarget.Texture2D,0,PixelInternalFormat.Rgba,bmp_data.Width,bmp_data.Height,0,OpenTK.Graphics.OpenGL.PixelFormat.Bgra,PixelType.UnsignedByte,bmp_data.Scan0);
 			bmp.UnlockBits(bmp_data);
