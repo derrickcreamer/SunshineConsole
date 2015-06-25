@@ -59,6 +59,7 @@ namespace SunshineConsole{
 		protected bool internal_key_pressed;
 		protected Key internal_last_key;
 		protected FrameEventArgs render_args = new FrameEventArgs(); //This is a necessary step if you're not using the default GameWindow loop.
+		protected bool resizing;
 		protected int num_elements;
 		protected static float half_height;
 		protected static float half_width;
@@ -89,8 +90,12 @@ namespace SunshineConsole{
 			CreateVBO(rows,columns);
 			Visible = true;
 			Resize += (sender,e) => {
-				Height = rows * font_h;
-				Width = columns * font_w;
+				if(!resizing){
+					resizing = true;
+					Height = rows * font_h;
+					Width = columns * font_w;
+					resizing = false;
+				}
 			};
 			//WindowBorder = WindowBorder.Fixed;
 		}
