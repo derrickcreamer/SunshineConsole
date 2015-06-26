@@ -92,8 +92,7 @@ namespace SunshineConsole{
 			Resize += (sender,e) => {
 				if(!resizing){
 					resizing = true;
-					Height = rows * font_h;
-					Width = columns * font_w;
+					ClientSize = new Size(columns*font_w,rows*font_h);
 					resizing = false;
 				}
 			};
