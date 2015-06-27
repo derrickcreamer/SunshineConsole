@@ -2,13 +2,19 @@
 A C# library for simple ASCII output/input
 
 Sunshine Console is intended to be very friendly to beginners that just want to put something on the screen (while still being powerful enough for larger ASCII projects). So, here are the very basics:
+
+First, you'll need to add Sunshine Console to your project. Instructions for that are [here](http://derrickcreamer.github.io/SunshineConsole/).
 ```c#
-// (Add references to SunshineConsole and OpenTK)
+// I recommend adding these 3 'using' directives for easier access to ConsoleWindow, Color4, and Key, respectively:
+using SunshineConsole;
+using OpenTK.Graphics;
+using OpenTK.Input;
+
 // Create a window, 16 rows high and 40 columns across:
 ConsoleWindow console = new ConsoleWindow(16,40,"Sunshine Console Hello World");
 
 // Write to the window at row 6, column 14:
-console.Write(6,14,"Hello World!",OpenTK.Graphics.Color4.Lime);
+console.Write(6,14,"Hello World!",Color4.Lime);
 
 // Finally, update the window until a key is pressed or the window is closed:
 while(!console.KeyPressed && console.WindowUpdate()){
@@ -29,21 +35,21 @@ That's all you need to get off the ground!
 ```c#
 // Retrieve all the information about row 0, column 4:
 char ch = console.GetChar(0,4);
-OpenTK.Graphics.Color4 color = console.GetColor(0,4);
-OpenTK.Graphics.Color4 bgcolor = console.GetBackgroundColor(0,4);
+Color4 color = console.GetColor(0,4);
+Color4 bgcolor = console.GetBackgroundColor(0,4);
 ```
 
 ##### Checking for new keypresses:
 ```c#
 if(console.KeyPressed){
-  OpenTK.Input.Key key = console.GetKey();
+  Key key = console.GetKey();
   // ...
 }
 ```
 ##### Checking whether a key is currently being held down:
 ```c#
 // Check whether either Control key is currently being held:
-if(console.KeyIsDown(OpenTK.Input.Key.LControl) || console.KeyIsDown(OpenTK.Input.Key.RControl)){
+if(console.KeyIsDown(Key.LControl) || console.KeyIsDown(Key.RControl)){
 	// ...
 }
 ```
