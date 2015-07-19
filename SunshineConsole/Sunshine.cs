@@ -20,12 +20,12 @@ using OpenTK.Input;
 namespace SunshineConsole{
 	/*public static class SunshineMain{ // Here's a quick example.
 		public static void Main(){
-			ConsoleWindow console = new ConsoleWindow(20,100,"Sunshine Console: The Roguelike");
+			ConsoleWindow console = new ConsoleWindow(20,60,"Sunshine Console: The Roguelike");
 			int row = 10; // These 2 ints are the player's position.
 			int col = 40;
 			while(console.WindowUpdate()){ // WindowUpdate() returns false if the window is closed, so be sure to check for that.
 				for(int i=0;i<20;++i){
-					console.Write(i,0,"".PadRight(100,'#'),Color4.DimGray); // Let's make our black screen look more like a dungeon.
+					console.Write(i,0,"".PadRight(60,'#'),Color4.DimGray); // Let's make our black screen look more like a dungeon.
 				}
 				console.Write(row,col,'@',Color4.White); // And of course, our player character.
 				if(console.KeyPressed){ // KeyPressed returns true if there's a new key to grab.
@@ -40,7 +40,7 @@ namespace SunshineConsole{
 					col = Math.Max(0,col-1);
 					break;
 					case Key.Right:
-					col = Math.Min(col+1,99);
+					col = Math.Min(col+1,59);
 					break;
 					}
 				}
@@ -64,10 +64,9 @@ namespace SunshineConsole{
 		protected static float half_height;
 		protected static float half_width;
 		protected const int font_w = 8;
-		protected const int font_h = 16;
+		protected const int font_h = 12;
 		protected const float font_texcoord_width = 1.0f / 128.0f;
-		protected static readonly float font_texcoord_padding = font_texcoord_width * 8.0f / 9.0f;
-		//protected const string font_filename = "font8x16.bmp";
+		protected static readonly float font_texcoord_padding = font_texcoord_width;
 		public ConsoleWindow(int rows,int columns,string window_title) : base(columns*font_w,rows*font_h,GraphicsMode.Default,window_title){
 			VSync = VSyncMode.On;
 			GL.ClearColor(0.0f,0.0f,0.0f,0.0f);
@@ -220,9 +219,8 @@ namespace SunshineConsole{
 			int id = GL.GenTexture();
 			GL.BindTexture(TextureTarget.Texture2D,id);
 			Assembly embedded = Assembly.GetExecutingAssembly();
-			Stream file = embedded.GetManifestResourceStream("SunshineConsole.font8x16.bmp");
+			Stream file = embedded.GetManifestResourceStream("SunshineConsole.dsc8x12.png");
 			Bitmap bmp = new Bitmap(file);
-			//Bitmap bmp = new Bitmap(filename);
 			BitmapData bmp_data = bmp.LockBits(new Rectangle(0,0,bmp.Width,bmp.Height),ImageLockMode.ReadOnly,System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 			GL.TexImage2D(TextureTarget.Texture2D,0,PixelInternalFormat.Rgba,bmp_data.Width,bmp_data.Height,0,OpenTK.Graphics.OpenGL.PixelFormat.Bgra,PixelType.UnsignedByte,bmp_data.Scan0);
 			bmp.UnlockBits(bmp_data);

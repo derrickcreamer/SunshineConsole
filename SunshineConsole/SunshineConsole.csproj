@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="font8x16.bmp" />
+    <EmbeddedResource Include="dsc8x12.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
