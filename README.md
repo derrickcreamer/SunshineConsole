@@ -1,7 +1,7 @@
 # Sunshine Console
 *A C# library for simple ASCII output/input*
 
-![Hello World](https://raw.githubusercontent.com/derrickcreamer/SunshineConsole/gh-pages/images/screen0_helloworld.png?raw=true)
+![Hello World](https://raw.githubusercontent.com/derrickcreamer/SunshineConsole/gh-pages/images/sunshinehelloworld.png?raw=true)
 
 Sunshine Console is intended to be very friendly to beginners that just want to put something on the screen (while still being powerful enough for larger ASCII projects). So, here are the very basics:
 
@@ -35,6 +35,12 @@ That's all you need to get off the ground!
 &nbsp;
 
 #### Other features
+
+##### Background colors:
+```c#
+// Draw a health pack powerup by writing a red '+' with a white background.
+console.Write(8,10,'+',Color4.Red,Color4.White);
+```
 
 ##### Checking what's onscreen:
 ```c#
@@ -78,4 +84,4 @@ console.ResumeUpdates();
 ##### Other OpenTK features:
 OpenTK has a lot of great features that you can access, because ConsoleWindow inherits from OpenTK.GameWindow. Among these are event handlers for window closing, focus changing, and even mouse input! Learn more at the [GameWindow reference](http://www.opentk.com/files/doc/class_open_t_k_1_1_game_window.html) and the [OpenTK docs](http://www.opentk.com/doc).
 
-![SCRL0](https://github.com/derrickcreamer/SunshineConsole/blob/gh-pages/images/screen1_rl0.png?raw=true)
+![SCRL0](https://raw.githubusercontent.com/derrickcreamer/SunshineConsole/gh-pages/images/sunshineroguelike.png?raw=true)
